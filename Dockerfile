@@ -7,7 +7,7 @@ COPY App.java .
 RUN javac App.java
 
 # Стадия 2: запуск
-FROM eclipse-temurin:21-jre
+FROM eclipse-temurin:21-jre AS runtime
 WORKDIR /app
 COPY --from=builder /app/*.class .
 EXPOSE 8080
