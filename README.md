@@ -92,3 +92,43 @@ docker rm habit-tracker-api
 ## Прошлая работа
 
 - Описание конфликта слияния: [git-conflict.md](git-conflict.md)
+
+## Запуск через Docker Compose
+
+Проект состоит из двух сервисов: `server` (Java API) и `db` (PostgreSQL).
+Данные БД хранятся в томе `db-data`, пароль передаётся через секрет.
+
+Перед запуском создайте файл `db-password.txt` с паролем для БД
+(в репозитории его нет, он исключён через .gitignore).
+
+Сборка и запуск:
+
+```
+docker compose up --build
+```
+
+Проверка:
+
+```
+docker ps
+curl http://localhost:8080/health
+curl http://localhost:8080/habits
+docker compose logs
+```
+
+Остановка:
+
+```
+docker compose stop
+```
+
+Результаты проверки:
+
+- [docker ps](evidence-compose/docker-ps.txt)
+- [ответ API](evidence-compose/api-response.txt)
+- [логи](evidence-compose/compose-logs.txt)
+
+![docker ps](evidence-compose/docker-ps.png)
+![ответ API](evidence-compose/api-response.png)
+![логи](evidence-compose/compose-logs.png)
+![Docker Desktop](evidence-compose/docker-desktop.png)
