@@ -4,3 +4,5 @@
 *.png
 *.class
 evidence
+db-password.txt
+evidence-compose
